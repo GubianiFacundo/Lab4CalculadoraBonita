@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora</title>
+    <script type="text/javascript">
+      function clickear(valor) {
+        document.getElementById("display").value += valor;
+        pantallaCalc = valor;
+      }
+
+      function limpiar(valor) {
+        document.getElementById("display").value = valor;
+      }
+
+      function calcular() {
+        try {
+          limpiar(eval(document.getElementById("display").value))
+        } catch (e) {
+          limpiar("Error!!!");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form class="estructura">
+      <div class="tela">
+        <input type="text" readonly size="17" id="display">
+      </div>
+      <div class="teclas">
+        <p>
+          <input type="button" class="boton nulo" value="">
+          <input type="button" class="boton nulo" value="">
+          <input type="button" class="boton nulo" value="">
+          <input type="button" class="boton Op" value="/" onclick='clickear("/")'>
+        </p>
+        <p>
+          <input type="button" class="boton numero" value="7" onclick='clickear("7")'>
+          <input type="button" class="boton numero" value="8" onclick='clickear("8")'>
+          <input type="button" class="boton numero" value="9" onclick='clickear("9")'>
+          <input type="button" class="boton Op" value="*" onclick='clickear("*")'>
+        </p>
+        <p>
+          <input type="button" class="boton numero" value="4" onclick='clickear("4")'>
+          <input type="button" class="boton numero" value="5" onclick='clickear("5")'>
+          <input type="button" class="boton numero" value="6" onclick='clickear("6")'>
+          <input type="button" class="boton Op" value="-" onclick='clickear("-")'>
+        </p>
+        <p>
+          <input type="button" class="boton numero" value="1" onclick='clickear("1")'>
+          <input type="button" class="boton numero" value="2" onclick='clickear("2")'>
+          <input type="button" class="boton numero" value="3" onclick='clickear("3")'>
+          <input type="button" class="boton Op" value="+" onclick='clickear("+")'>
+        </p>
+        <p>
+          <input type="button" class="boton numero" value="." onclick='clickear(".")'>
+          <input type="button" class="boton numero" value="0" onclick='clickear("0")'>
+          <input type="button" class="boton Op" value="C" onclick='limpiar("")'>
+          <input type="button" class="boton Op" value="=" onclick="calcular()">
+        </p>
+      </div>
+    </form>
+    <div class="jumbotron">
+      <h2 class="text-center">Historial:</h2>
+      <ul id="listaHistorial" class="list-group">
+      </ul>
+  </div>
+  </body>
+</html>
